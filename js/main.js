@@ -18,11 +18,11 @@ function mostrarProductos(productos) {
 // Declaro variables u objetos 
 
 const productos = [
-  { idProducto: 1, producto: "DJI Neo", valor: 1049900 },
-  { idProducto: 2, producto: "DJI Mini 4 Pro", valor: 4449900 },
-  { idProducto: 3, producto: "DJI Avata 2", valor: 5619900 },
-  { idProducto: 4, producto: "DJI Matrice 4", valor: 24999900 },
-  { idProducto: 5, producto: "DJI Air 3", valor: 5869900 },
+  { idProducto: 1, producto: "DJI Neo", valor: 1049900, enlace: ''},
+  { idProducto: 2, producto: "DJI Mini 4 Pro", valor: 4449900,enlace: '' },
+  { idProducto: 3, producto: "DJI Avata 2", valor: 5619900, enlace: ''},
+  { idProducto: 4, producto: "DJI Matrice 4", valor: 24999900, enlace: ''},
+  { idProducto: 5, producto: "DJI Air 3", valor: 5869900, enlace: ''},
 ];
 
 let totalCompra = 0;
