@@ -62,7 +62,6 @@ function agregarCarrito() {
         productoSeleccionado.cantidad = 1;
         carrito.push(productoSeleccionado);
       }
-      console.log(carrito);
       localStorage.setItem("carrito", JSON.stringify(carrito));
       productsContainer.innerHTML = '';
       renderProductos(productos);
@@ -127,7 +126,7 @@ function renderProductos(productos) {
   eliminarCarrito();
 }
 
-// Declaro variables, objetos funciones
+// Inicio
 
 let productsContainer = document.getElementById("productos-contenedor");
 renderProductos(productos);
