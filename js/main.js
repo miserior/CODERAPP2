@@ -1,42 +1,16 @@
-// Declaro variables, objetos funciones
+let productos = [];
 
-const productos = [
-  {
-    idProducto: 1,
-    producto: "DJI Neo",
-    valor: 1049900,
-    enlace:
-      "../assets/img/producto-neo.png",
-  },
-  {
-    idProducto: 2,
-    producto: "DJI Mini 4 Pro",
-    valor: 4449900,
-    enlace:
-      "../assets/img/producto-mini-4-pro.jpeg",
-  },
-  {
-    idProducto: 3,
-    producto: "DJI Avata 2",
-    valor: 5619900,
-    enlace:
-      "../assets/img/producto-avata2.png",
-  },
-  {
-    idProducto: 4,
-    producto: "DJI Matrice 4",
-    valor: 24999900,
-    enlace:
-      "../assets/img/producto-matrice-350.png",
-  },
-  {
-    idProducto: 5,
-    producto: "DJI Air 3",
-    valor: 5869900,
-    enlace:
-      "../assets/img/producto-air-3.png",
-  },
-];
+fetch("../db/data.json")
+  .then(response => response.json())
+  .then(data => {
+    productos = data
+    renderProductos(productos)
+    agregarCarrito()
+    eliminarCarrito()
+  })
+  .catch(error => {
+    console.error("Error al cargar los productos:", error);
+  });
 
 let carrito = localStorage.getItem("carrito");
 if (carrito) {
@@ -49,22 +23,46 @@ function agregarCarrito() {
   addButton = document.querySelectorAll(".productoAgregar");
   addButton.forEach((button) => {
     button.onclick = (e) => {
-      const productoId = e.currentTarget.id;
-      const productoSeleccionado = productos.find(
-        (producto) => producto.idProducto == productoId
-      );
-      const productoEnCarrito = carrito.find(
-        (item) => item.idProducto == productoId
-      );
-      if (productoEnCarrito) {
-        productoEnCarrito.cantidad++;
-      } else {
-        productoSeleccionado.cantidad = 1;
-        carrito.push(productoSeleccionado);
+      try {
+        const productoId = e.currentTarget.id;
+        const productoSeleccionado = productos.find(
+          (producto) => producto.idProducto == productoId
+        );
+        const productoEnCarrito = carrito.find(
+          (item) => item.idProducto == productoId
+        );
+        if (productoEnCarrito) {
+          productoEnCarrito.cantidad++;
+        } else {
+          productoSeleccionado.cantidad = 1;
+          carrito.push(productoSeleccionado);
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        productsContainer.innerHTML = '';
+        renderProductos(productos);
+  
+        // Agregamos la libreria para notificar
+        Toastify({
+          text: "Producto añadido al carrito",
+          duration: 3000,
+          close: true,
+          gravity: "top", 
+          position: "right", 
+          style: {  
+            background: "linear-gradient(to right, #000000,rgb(95, 93, 93))"
+          },
+          stopOnFocus: true, 
+        }).showToast();
+        
       }
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      productsContainer.innerHTML = '';
-      renderProductos(productos);
+      catch (error) {
+        Swal.fire({
+          title: "Error",
+          text: "Hubo un problema al agregar el producto al carrito. Por favor, intenta de nuevo.",
+          icon: "error",
+        });
+      }
+
     };
   });
 }
@@ -129,4 +127,3 @@ function renderProductos(productos) {
 // Inicio
 
 let productsContainer = document.getElementById("productos-contenedor");
-renderProductos(productos);

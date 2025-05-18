@@ -1,0 +1,37 @@
+[
+    {
+      "idProducto": 1,
+      "producto": "DJI Neo",
+      "valor": 1049900,
+      "enlace":
+        "../assets/img/producto-neo.png"
+    },
+    {
+      "idProducto": 2,
+      "producto": "DJI Mini 4 Pro",
+      "valor": 4449900,
+      "enlace":
+        "../assets/img/producto-mini-4-pro.jpeg"
+    },
+    {
+      "idProducto": 3,
+      "producto": "DJI Avata 2",
+      "valor": 5619900,
+      "enlace":
+        "../assets/img/producto-avata2.png"
+    },
+    {
+      "idProducto": 4,
+      "producto": "DJI Matrice 4",
+      "valor": 24999900,
+      "enlace":
+        "../assets/img/producto-matrice-350.png"
+    },
+    {
+      "idProducto": 5,
+      "producto": "DJI Air 3",
+      "valor": 5869900,
+      "enlace":
+        "../assets/img/producto-air-3.png"
+    }
+  ]
