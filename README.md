@@ -1,4 +1,4 @@
-![Logo](./assets/spacepro-logo.png)
+![Logo](./assets/img/spacepro-logo.png)
 
 
 # Proyecto final coder - Javascript
